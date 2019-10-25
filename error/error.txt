@@ -1,0 +1,49 @@
+Last login: Fri Oct 25 10:58:39 on ttys000
+developer@administorsimac ~ % cd Desktop/vlcj4-open-capture-device
+developer@administorsimac vlcj4-open-capture-device % sh start.sh 
+vlcj             : 4.2.0
+os               : Mac OS X 10.15 x86_64
+java             : 1.8.0_221 Oracle Corporation
+java.home        : /Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre
+jna.library.path : vlclib/mac/lib
+java.library.path: /Users/developer/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+PATH             : /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/opt/X11/bin
+VLC_PLUGIN_PATH  : <not set>
+DYLD_LIBRARY_PATH          : <not set>
+DYLD_FALLBACK_LIBRARY_PATH : <not set>
+download nativ libs from there:
+windows: http://download.videolan.org/pub/videolan/vlc/3.0.8/win64/vlc-3.0.8-win64.7z
+macos: http://download.videolan.org/pub/videolan/vlc/3.0.8/macosx/vlc-3.0.8.dmg
+====================================================================
+
+execute in ide
+add vlc libraries into vlclib directory!
+specify vm argument -Djna.library.path="vlclib/mac/lib" to start from ide
+specify programm argument like "0x1450000005ac8511" to start from ide
+====================================================================
+
+execute without ide
+add vlc libraries into vlclib directory!
+navigate into vlcj4-open-capture-device directory
+execute folowing commands
+sudo chmod 755 start.sh
+sudo chmod 755 gradlew
+./gradlew clean jar
+nano start.sh, add capture source like "0x1450000005ac8511" and save it 
+./sh start.sh
+====================================================================
+
+playing mrl: avcapture://0x1450000005ac8511
+with options: [:screen-fps=30, dst=display}]
+[00007feff2e2bbb0] macosx vout display error: No drawable-nsobject nor vout_window_t found, passing over.
+[00007feff10016f0] main video output error: video output creation failed
+[00007feff2e2a1f0] main decoder error: failed to create video output
+[00007feff2e38460] macosx vout display error: No drawable-nsobject nor vout_window_t found, passing over.
+[00007feff2183af0] main video output error: video output creation failed
+[00007feff2e2a1f0] main decoder error: failed to create video output
+[00007feff596bfd0] macosx vout display error: No drawable-nsobject nor vout_window_t found, passing over.
+[00007feff10016f0] main video output error: video output creation failed
+[00007feff2e2a1f0] main decoder error: failed to create video output
+[....]
+Execution failed for task ':MinimalTestPlayer.main()'.
+> Process 'command '/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/bin/java'' finished with non-zero exit value 143
